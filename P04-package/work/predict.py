@@ -9,13 +9,15 @@ from delivery import load_model
 
 def main():
     model = load_model(Path(__file__).parent / "model.joblib")
-    one = pd.DataFrame([{
+
+    order = pd.DataFrame([{
         "distance_km": 7.0,
         "prep_time_min": 25,
         "traffic_level": 3,
         "rain": 0,
     }])
-    minutes = float(model.predict(one)[0])
+
+    minutes = model.predict(order)[0]
     print(f"PREDICTION: {minutes:.1f}")
     return 0
 
